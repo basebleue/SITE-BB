@@ -6,13 +6,14 @@ media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
-  name: "evenements"
-  label: "Evenements"
-  folder: "content/evenements"
-  create: true
-  slug: "{{year}}-{{slug}}"
-  fields:
-    - {label: "Title", name: title, widget: "string"}
-    - {label: "Date", name: date, widget: ""}
-    - {label: "Description", name: description, widget: "string"}
-    - {label: "Location", name: location, widget: "string"}
+  - name: "evenements"
+    label: "Evenements"
+    folder: "content/evenements"
+    create: true
+    slug: "{{year}}-{{slug}}"
+    fields:
+      - {label: "Title", name: title, widget: "string"}
+      - {label: "Date", name: date, widget: "datetime"}
+      - {label: "Description", name: description, widget: "string"}
+      - {label: "Location", name: location, widget: "string"}
+      - {label: "Image", name: image, widget: "image"}
