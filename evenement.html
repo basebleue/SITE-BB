@@ -157,22 +157,15 @@ Cette exposition a été coproduite par base bleue, l’Université Paris 8 via 
     </style>
 
     <script>
-        function positionImage(element) {
-            const image = element.nextElementSibling;
-            const bodyRect = document.body.getBoundingClientRect();
-            const maxX = bodyRect.width - 300; // 300px is max-width of image
-            const maxY = bodyRect.height - 300; // 300px is max-height of image
-            
-            // Generate random position
-            const randomX = Math.floor(Math.random() * window.innerWidth);
-            const randomY = Math.floor(Math.random() * window.innerHeight);
-            
-            // Set the position
-            image.style.left = randomX + 'px';
-            image.style.top = randomY + 'px';
-        }
+        window.onload = function() {
+  move()
+}
 
-        window.onload = function() 
+function move() {
+  let img = document.getElementById('logo')
+  img.style.left = Math.floor(Math.random() * window.innerWidth) + "px"
+  img.style.top = Math.floor(Math.random() * window.innerHeight) + "px"
+}
     </script>
 </body>
 </html> 
