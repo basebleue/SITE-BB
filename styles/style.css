@@ -1,0 +1,37 @@
+body {
+	color: #7d7df7;
+	text-align: center;
+	font-size: 25px;
+	position: center;
+	margin: 50px;
+}
+
+
+@font-face {
+	font-family: 'RebondGrotesque-Regular';
+	src: url(‘/fonts/RebondGrotesque-Regular.otf’) format(‘otf’),
+}
+body {
+	font-family: 'RebondGrotesque-Regular', sans-serif;
+	background-color: lightgray;
+}
+
+
+a {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+ }
+
+a:hover {
+  color: #83fa4d;
+}
+a:hover {
+  underline: none;
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+  color: #7d7df7;
+}
