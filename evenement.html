@@ -164,13 +164,15 @@ Cette exposition a été coproduite par base bleue, l’Université Paris 8 via 
             const maxY = bodyRect.height - 300; // 300px is max-height of image
             
             // Generate random position
-            const randomX = Math.floor(Math.random() * maxX);
-            const randomY = Math.floor(Math.random() * maxY);
+            const randomX = Math.floor(Math.random() * window.innerWidth);
+            const randomY = Math.floor(Math.random() * window.innerHeight);
             
             // Set the position
             image.style.left = randomX + 'px';
             image.style.top = randomY + 'px';
         }
+
+        window.onload = function() 
     </script>
 </body>
 </html> 
