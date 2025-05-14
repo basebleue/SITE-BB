@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Image aléatoire au survol</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
+      background: #f0f0f0;
+    }
+
+    .texte {
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 1;
+      position: relative;
+    }
+
+    #image-survol {
+      position: absolute;
+      width: 150px;
+      height: auto;
+      display: none;
+      pointer-events: none;
+      z-index: 10;
+      transition: opacity 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <p class="texte">Passe la souris ici pour faire apparaître l'image !</p>
+  <img id="image-survol" src="ton-image.jpg" alt="Image surprise">
+
+  <script>
+    const texte = document.querySelector('.texte');
+    const image = document.getElementById('image-survol');
+
+    texte.addEventListener('mouseenter', () => {
+      // Taille disponible dans la fenêtre
+      const maxX = window.innerWidth - image.offsetWidth;
+      const maxY = window.innerHeight - image.offsetHeight;
+
+      // Position aléatoire dans les limites
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+
+      image.style.left = `${randomX}px`;
+      image.style.top = `${randomY}px`;
+      image.style.display = 'block';
+    });
+
+    texte.addEventListener('mouseleave', () => {
+      image.style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>
