@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie d'Images</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+    <!-- Colonne de gauche -->
+    <div class="left-column">
+        <div class="left-column-text">
+                <p id="left-column-text">Projets éditoriaux</p><br><br>
+                </div>
+        <ul>
+            <li><img src="images/Scan 23.jpeg" alt="Description de l'image"></li>
+            <li><img src="image1.jpg" alt="Image 1"></li>
+            <li><img src="image2.jpg" alt="Image 2"></li>
+            <li><img src="image3.jpg" alt="Image 3"></li>
+            <!-- Ajoutez d'autres images ici -->
+        </ul>
+    </div>
+
+    <!-- Colonne de droite -->
+    <div class="right-column">
+        <div class="carousel">
+            <div class="carousel-text">
+                <p id="carousel-description">
+                  Recherches menées par Alix Laraignou et Adèle Morineau<br>
+                  Avec les contributions de Gaé, Lison Zzzero, Marie Andrieu et Pauline Thirion<br>
+                  Date de publication : mars 2025<br>
+                  Pages : 70<br>
+                  Dimensions : 210mm x 140mm</p> <br>
+La tarte se partage, se coupe en parts, se distribue, se rompt – tout comme le pain dont elle dérive. 
+Ce mets familier de la cuisine française (mais pas que), sut autant faire sa place parmi les soupers populaires que sur les tables royales. 
+Elle apparaît dans de nombreux contes, expressions langagières, légendes culinaires et ritournelles, et devient également un élément central de la comédie burlesque. 
+À travers ces pages, nous avons donc cherché à sonder la tarte – en nous intéressant à ses origines, en tentant d’inventorier la diversité de ses recettes et la multiplicité de ses formes, et en retraçant son évolution à travers les âges et nos imaginaires. 
+Elle se donnera donc à voir d’abord sous son sens propre, mais aussi sous son sens figuré, car la tarte n’est pas uniquement faite pour être mangée. La tarte, elle se regarde, elle symbolise, elle évoque, voire personnifie. 
+On l’utilise pour faire autant illusion qu’allusion – que cela soit au secret, à la fuite du temps, ou aux apparences trompeuses. <br>
+Enfin, la tarte se retrouve aussi au milieu de nombreux débats. 
+Culinaires d’abord, à cause de ses recettes variant entre les localités, pouvant déclencher parfois de vives querelles de chapelle, puis politiques, quand la tarte n’est plus dégustée mais lancée au visage, plus tellement pour faire rire, mais surtout en signe de contestation. 
+En mêlant dans cette recherche, pop culture, savoirs vernaculaires et (une pincée de) culture savante, nous vous concoctons ici une approche contrastée et décloisonnée de la tarte, de son histoire et de sa symbolique. Ces différents modes de savoir sont ici considérés sur un pied d'égalité pour tenter de les faire dialoguer – voir comme ils se répondent et se nourrissent - et peut-être faire advenir d’autres savoirs inattendus.
+
+                </div>
+            <div class="carousel-container">
+  <div class="carousel-images" id="carousel-images">
+     <ul>
+<li><img src="images/BB6.jpg" alt="Intérieur Tartanalyse"></li>
+ </ul>
+</div>
+  <div class="carousel-controls">
+    <button id="prev" class="carousel-btn">‹</button>
+    <button id="next" class="carousel-btn">›</button>
+  </div>
+  <div class="carousel-caption" id="carousel-caption"></div>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+<style> 
+
+body {
+    color: #7d7df7;
+    text-align: center;
+    font-size: 15px;
+    position: center;
+    margin: 0;
+    font-family: 'RebondGrotesque-Regular', sans-serif;
+    background-color: lightgray;
+    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    height: 100vh; /* Hauteur de la fenêtre */
+}
+
+    .left-column {
+  flex: 0 0 20%; /* La colonne de gauche occupe 30% de la largeur */
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+.right-column {
+  flex: 1; /* La colonne de droite occupe le reste de l'espace disponible */
+  padding: 12px;
+  background-color: #ffffff;
+}
+
+.left-column img {
+    width: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.left-column img:hover {
+    transform: none;
+}
+
+.right-column {
+    background-color: #fafafa;
+    position: relative;
+}
+
+
+
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-images {
+  display: flex;
+  transition: transform 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.carousel-item {
+  min-width: 100%;
+  position: relative;
+}
+
+.carousel-item img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.carousel-caption {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.carousel-text {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: left;
+  padding: 10px;
+  background-color: none
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  z-index: 2;
+}
+
+
+</style>
+
+<script>
+
+const carouselImages = document.querySelector('.carousel-images');
+const items = document.querySelectorAll('.carousel-item');
+let currentIndex = 0;
+
+function updateCarousel() {
+  const offset = -currentIndex * 100;
+  carouselImages.style.transform = `translateX(${offset}%)`;
+}
+
+function autoSlide() {
+  currentIndex = (currentIndex + 1) % items.length;
+  updateCarousel();
+}
+
+setInterval(autoSlide, 1000); // Change d'image toutes les 1 seconde

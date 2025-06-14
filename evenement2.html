@@ -1,65 +1,235 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Image aléatoire au survol</title>
+  
   <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: sans-serif;
-      background: #f0f0f0;
+  body {
+    color: #7d7df7;
+    text-align: center;
+    font-size: 25px;
+    position: center;
+    margin: 50px;
+    font-family: 'RebondGrotesque-Regular', sans-serif;
+    background-color: lightgray;
     }
 
-    .texte {
-      font-size: 24px;
-      cursor: pointer;
-      z-index: 1;
-      position: relative;
+    @font-face {
+    font-family: 'RebondGrotesque-Regular';
+    src: url(‘/fonts/RebondGrotesque-Regular.otf’) format(‘otf’),
     }
+
+
+    .mot-hover {
+      color: #7d7df7; /* couleur initiale */
+      text-decoration: none;
+      cursor: pointer;
+      position: relative;
+      transition: 0.3s;
+    }
+    .mot-hover:hover {
+    color: #83fa4d; /* couleur au survol */
+}
 
     #image-survol {
       position: absolute;
-      width: 150px;
-      height: auto;
+      width: 550px;
+      max-height: 90vh;
+      max-width: 90vw;
+      z-index: 999;
       display: none;
       pointer-events: none;
-      z-index: 10;
       transition: opacity 0.3s ease;
     }
+      p {
+            font-size: 18px;
+            color: #7d7df7;
+            margin-bottom: 20px;
+        }
+
+      .fleche-retour {
+  position: center;
+  top: 20px;
+  left: 20px;
+  font-size: 24px;
+  color: #7d7df7;
+  text-decoration: none;
+  transition: color 0.3s;
+  z-index: 1001;
+}
+
+.fleche-retour:hover {
+  color: #83fa4d;
+  text-decoration: none;
+}
+
   </style>
 </head>
-<body>
 
-  <p class="texte">Passe la souris ici pour faire apparaître l'image !</p>
-  <img id="image-survol" src="ton-image.jpg" alt="Image surprise">
+<body>
+  <a href="index.html" class="fleche-retour">↩</a>
+<p>
+  <b><span class="mot-hover"data-image="images/BB0.jpeg">* BB0 : ᎿᏫmᏰ0lᎯ / 20 mars 2022</span></b><br>
+Pour fêter la fin du début de base bleue et donner un élan à nos futurs projets artistiques, nous avons organisé une rencontre sous la forme d’une tombola. 
+Dj sets, tirages, breuvages<br><br>
+
+  <b><span class="mot-hover"data-image="images/BB5.png">* BB1 : MᎯᎡᏣHÉ DE ᏣᎡÉᎯTIᎤNᏕ / 15 mai 2022</span></b><br>
+Une dizaine d’artisan.es invité.es lors d’un week-end pour exposer et vendre leurs créations. Organisation d’ateliers en parallèle ; céramique, bijoux upcyclés et linogravure. Avec : 12 timbres, BJX. Laura Terzic, Atelier Marron, ATELIER SOLn, Atelier Ternaire, Yingtong Zhao<br><br>
+
+  <b><span class="mot-hover"data-image="images/BB2.png">* BB2 : ᏣEᎡTᎯINEᏕ ᎷÉDᎧᏕEᏕ ᏕᏫNT IMMᎤᎡTEᏝᏝEᏕ / juin 2022</span></b><br>
+Une exposition collective avec Anouck Chênebeau, Isaline Dupond Jacquemart et Alix Laraignou qui interrogent à travers trois formes de langages plastiques, les frontières du devenir.<br><br>
+
+  <b><span class="mot-hover"data-image="images/BB3.png">* BB3 : QUADERNO 1 - KØBENHAVN / 1er octobre 2022</span></b><br>
+Lancement du guide subjectif de Copenhague QUADERNO.<br>
+Initié par Louise Cattarinussi, accompagnée par Maud Yvon, toutes deux membres du collectif base bleue.<br><br>
+
+<b><span class="mot-hover"data-image="images/BB4.jpeg">* BB4 :  *·sᴜʀᴛᴏᴜᴛ ᴅᴇs ғʟᴇᴜʀs ᴇᴛ ᴅᴇs ᴠɪsᴀɢᴇs·' ՞  / octobre 2022</span></b><br>
+Exposition personnelle de DASHAETDASHA</b><br>
+A travers des formes fixes et colorées répétées jour après jour dans ses carnets, DASHAETDASHA laisse avec curiosité se déployer l'inconnu. Elle devient alors l’observatrice de son propre geste. Sans quête d’évolution formelle ou de perfectibilité, cette pratique ritualisée se transforme en un champ d’exploration pour une meilleure connaissance de soi et du monde.
+A l’occasion de l’exposition, base bleue a édité un livret réunissant une quinzaine de dessins exposés et disponible à la vente.
+Lors du vernissage, nous avons accueilli Simple Pied, artiste et créateur d’astucieux mélanges d’herbes aromatiques et médicinales cultivés chez lui en Charentes. Programmation musicale : Propagande par la Fête (cofondateur de la webradio Tikka), Sasha2000 (fondateur du festival Musique Magique) et Courage Fuyons<br>
+Une proposition d’Alix Laraignou<br><br>
+
+  <b><span class="mot-hover"data-image="images/BB5.png">* BB5 : MᎤDUᏕ ᎤPEᎡᎯNDI / 10-11 décembre 2022</span></b><br>
+Week-end sous le signe du savoir-faire et de l’ingéniosité, grâce à une ribambelle d’artistes et artisan·ne·s présent·e·s pour partager et vendre le fruit de leur travail.<br>
+    • PᎤP ԱP par 12 timbres : impressions artisanales et instinctives d’affiches et de tee-shirts upcyclés<br>
+    • MᎯᎡᏣHÉ DE ᏣᎡÉᎯTIᎤNᏕ : couture, surcyclage, sérigraphie papier et textile, illustration, papier graine, teinture végétale, broderie, crochet, & autres surprises avec BJX. CHUT.E.S, Diane Di Sciullo, Eliot Dubois, Juliette Gauvrit, Lucile Jocquel,  Knot around, Lucie Roullier, Les Enfants Chiens, The Face Fabrik<br><br>
+
+  <b><span class="mot-hover"data-image="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800">* ғᴇsᴛɪᴠᴀʟ ᴛᴇɴᴋ ᴄʜᴇᴢ ʟ’ʜᴀʙɪᴛᴀɴᴛ x ʙᴀsᴇ ʙʟᴇᴜᴇ / 28-29 janvier 2023</span></b><br>
+Le festival Doc chez l’Habitant organisé par l’association ATCHA promeut la plateforme de documentaires Tënk. Le principe est simple, partout en France, il est possible de projeter chez soi une sélection de documentaires pendant un week-end et d’inviter du public.<br>
+Pour l’occasion, base bleue a programmé 4 films projetés le long d’un week-end :
+<em>Les éclaireuses</em> de Lydie Wisshaupt-Claudel, <em>Ghost Song</em> de Nicolas Peduzzo, <em>Little Palestine</em> d’Abdallah Al-Khatib, <em>Flee</em> de Jonas Poher Rasmussen<br><br>
+
+  <b><span class="mot-hover"data-image="images/01.png">* 𝗖𝗢𝗡𝗧𝗘𝗡𝗧·𝗘𝗦 𝗤𝗨'𝗢𝗡 𝗧𝗘𝗡𝗧𝗘 / avril 2023</span></b><br>
+Projet visuel en soutien à la grève et dont tous les bénéfices ont été versés aux caisses de grève.<br>
+Réalisées par base bleue et ses membres, ces cartes postales sont en vente afin de soutenir le mouvement social contre la réforme des retraites, la loi Immigration et plus largement contre la politique de Macron (et de son monde), écocide, inégalitaire et destructrice. Chaque carte a été réalisée par un membre de base bleue, les médiums convoqués sont variés : photographie, dessin et linogravure. On y évoque les questions de la révolte, de l'espoir d'un monde meilleur, des alternatives au mode de vie normé et capitaliste, de la ville comme moyen d'expression et de la force des slogans.<br><br>
+
+  <b><span class="mot-hover"data-image="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800">* BB2bis : ᏣEᎡTᎯINEᏕ ᎷÉDᎧᏕEᏕ ᏕᏫNT IMMᎤᎡTEᏝᏝEᏕ</span></b><br>
+Une édition collective avec Anouck Chênebeau, Louise Cattarinussi, Isaline Dupond Jacquemart, Alix Laraignou, Marine Lemaire et Maud Yvon<br>
+Presque un an auparavant, base bleue imaginait l’exposition Certaines méduses sont immortelles. Ce projet a initié de vives discussions, de douces rêveries et des méditations spéculatives en tout genre. Le collectif a souhaité les poursuivre, les étendre et les partager dans une édition. Mêlant l’écrit et l’image, cet ouvrage collectif donne à voir des facettes de nos existences incarnées nous constituant à différents âges. Il sonde le regard porté sur les corps et explore l’être en train de se faire et de se défaire.<br>
+Editée par base bleue, imprimée en 50 exemplaires. <br>
+Le lancement a eu lieu le 16 mai 2023 chez AHA, Paris 10<br>
+Cette édition a été sélectionnée pour faire partie de l’exposition Impressions Mutantes, tenue à Nantes en novembre 2023.<br><br>
+
+  <b><span class="mot-hover"data-image="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800">* BB6 : ☆ skkinz x base bleue ☆ / 15 mai 2023</span></b><br>
+Collaboration avec l’artiste tatoueur de Leipzig skkinz, qui travaille aussi bien le papier que la peau. Ses dessins sont empreints d’une mythologie propre à l’artiste, un univers qui regorge de références et de symboles insondables.<br>
+Réalisation d’une collection de vêtements - 50 pièces uniques de seconde main sérigraphiées artisanalement par yamaz  & Maud Yvon, dans ses ateliers.<br>
+La vente a eu lieu le 15 mai 2023, Paris 1er.<br>
+Initié par yamaz.<br><br>
+
+  <b><span class="mot-hover" data-video="videos/BB7.mp4">* BB7 : 𝑯𝑼𝑴𝑬𝑫𝑨𝑫𝑬𝑺 / 2023</span></b><br>
+Une édition base bleue de l’artiste Ángela Jiménez Durán<br>
+HUMEDADES est née d’une rencontre, celle de l’artiste Ángela Jiménez Durán et de la commissaire Margaux Knight. Ce texte est le fruit de leurs échanges, de leur curiosité réciproque. Ce projet fut pensé collectivement avec les membres du collectif base bleue, dont fait partie Vincent Chappuis, qui a matérialisé ce dialogue en concevant un ouvrage triptyque singulier.<br>
+Editée par base bleue, imprimée en 250 exemplaires. <br>
+Le lancement a eu lieu le 17 novembre 2023 à POUSH dans les ateliers de l’artiste et à la Bodega.<br>
+Programmation musicale : Octave Magescas (Live), Elen Huynh / Choses Contraires (Dj set), Suricata (Live)<br><br>
+
+  <b><span class="mot-hover" data-image="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800">* BB8 : QUADERNO #2 / 2024</span></b><br>
+Une édition base bleue du Guide QUADERNO de Louise Cattarinussi<br>
+UQUADERNO est une collection de guides de voyage subjectifs. Entre carnets d’dresses et livres de photographie, l’idée est de donner envie à chacun.e de composer ses propres itinéraires d’exploration. Après un premier numéro autour de la ville de Copenhague, Louise nous invite à explorer son paris à elle, forte de son amour pour les bonnes et belles choses. A l’occasion de ce second numéro, elle a donné carte blanche à Anouck Chênebeau, photographe, qui nous donne à voir les contoures et nuances de la capitale.
+Le lancement a eu lieu le 23 mars 2024 à AHA (75010).<br><br>
+
+  <b><span class="mot-hover" data-video="videos/BB9.mp4">* BB9 : 👁️‍🗨️LES YEUX OLYMPIQUES / 23 - 27 mai 2024</span></b><br>
+Une exposition collective sur la vidéosurveillance dans l’espace public, accueilli au DOC (75019)<br>
+Avec une enquête journalistique d’Oscar Khosla, Camille Poulain, Niel Kadereit, Paul Viéban, la création sonore Vigilance (2024) de Justin Carrette et Marine Lemaire et la vidéo participative SUSPECT  (2024)<br>
+Cette exposition a accueilli une table ronde le 25 mai avec des expert.es du sujet :<br>
+    • Laure Massiet du Biest, co-réalisatrice du court-métrage Les Yeux Carrés<br>
+    • Myrtille Picaud, sociologue de la transformation des villes<br>
+    • Noémie Levain, juriste de la Quadrature du Net<br>
+    • Thomas Jusquiame, journaliste et auteur de Circulez, la ville sous surveillance<br>
+    • Ulrike Lune Riboni, maîtresse de conférences en Sciences de l’information et de la communication à l’Université Paris 8<br>
+Cette exposition a été coproduite par base bleue, l’Université Paris 8 via son Fonds de solidarité et de développement des initiatives étudiantes (FSDIE) et le Crous Culture Action.
+
+
+</p>
+
+ <img id="image-survol" src="" alt="image survol">
+ <video id="video-survol" muted loop playsinline style="display: none; position: absolute; z-index: 999; width: 400px; max-height: 90vh; pointer-events: none;"></video>
+
+  <img id="image-survol" src="" alt="image survol">
+  <video id="video-survol" muted loop playsinline></video>
 
   <script>
-    const texte = document.querySelector('.texte');
-    const image = document.getElementById('image-survol');
+  const mots = document.querySelectorAll('.mot-hover');
+const image = document.getElementById('image-survol');
+const video = document.getElementById('video-survol');
+const maxWidth = 550;
 
-    texte.addEventListener('mouseenter', () => {
-      // Taille disponible dans la fenêtre
-      const maxX = window.innerWidth - image.offsetWidth;
-      const maxY = window.innerHeight - image.offsetHeight;
+function getRandomPosition() {
+  return Math.random() < 0.5 ? 'left' : 'right';
+}
 
-      // Position aléatoire dans les limites
-      const randomX = Math.floor(Math.random() * maxX);
-      const randomY = Math.floor(Math.random() * maxY);
+mots.forEach(mot => {
+  mot.addEventListener('mouseenter', () => {
+    const videoSrc = mot.getAttribute('data-video');
+    const imageSrc = mot.getAttribute('data-image');
+    const rect = mot.getBoundingClientRect();
+    const scrollTop = window.scrollY;
+    const scrollLeft = window.scrollX;
 
-      image.style.left = `${randomX}px`;
-      image.style.top = `${randomY}px`;
-      image.style.display = 'block';
-    });
+    // Réinitialiser l'affichage
+    image.style.display = 'none';
+    video.style.display = 'none';
+    image.src = '';
+    video.src = '';
 
-    texte.addEventListener('mouseleave', () => {
-      image.style.display = 'none';
-    });
-  </script>
+    const displayMedia = (media, width, height, position) => {
+      let top = scrollTop + rect.bottom + 10;
+      let left;
 
-</body>
-</html>
+      if (position === 'left') {
+        left = scrollLeft + rect.left - width - 10;
+      } else {
+        left = scrollLeft + rect.left + rect.width + 10;
+      }
+
+      // Corriger le débordement horizontal
+      if (left < scrollLeft + 10) left = scrollLeft + 10;
+      if (left + width > scrollLeft + window.innerWidth)
+        left = scrollLeft + window.innerWidth - width - 10;
+
+      // Corriger le débordement vertical
+      if (top + height > scrollTop + window.innerHeight)
+        top = scrollTop + rect.top - height - 10;
+
+      // Afficher le média
+      media.style.width = width + 'px';
+      media.style.left = left + 'px';
+      media.style.top = top + 'px';
+      media.style.display = 'block';
+    };
+
+    if (videoSrc) {
+      video.src = videoSrc;
+      video.onloadedmetadata = () => {
+        const aspectRatio = video.videoHeight / video.videoWidth;
+        const width = Math.min(maxWidth, window.innerWidth - 20);
+        const height = width * aspectRatio;
+        const position = getRandomPosition();
+        displayMedia(video, width, height, position);
+        video.play();
+      };
+    } else if (imageSrc) {
+      const img = new Image();
+      img.src = imageSrc;
+      img.onload = () => {
+        const aspectRatio = img.height / img.width;
+        const width = Math.min(maxWidth, window.innerWidth - 20);
+        const height = width * aspectRatio;
+        const position = getRandomPosition();
+        image.src = imageSrc;
+        displayMedia(image, width, height, position);
+      };
+    }
+  });
+
+  mot.addEventListener('mouseleave', () => {
+    image.style.display = 'none';
+    image.src = '';
+    video.style.display = 'none';
+    video.pause();
+    video.src = '';
+  });
+});
+</script>
+
