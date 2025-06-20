@@ -1,103 +1,97 @@
-<html langue="fr"> 
-<a href="index.html"><p>↩</p></a>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact - Base Bleue</title>
 
-<form action="/leads-subscribing-newsletter" method="post">
-  
-  <p><div><label for="email">Vous pouvez nous écrire sur <a href="mailto:votreadresse@mail.fr">coucou@basebleue.com</a>,<br> si vous souhaitez vous abonner à notre infolettre et recevoir des nouvelles de BB, vous pouvez aussi nous partagez votre email<br>⤥⤦<br></label> <input id="email" name="subscriber_email" type="email" /></div>
+  <style>
+    body {
+      color: #7d7df7;
+      text-align: center;
+      font-size: 25px;
+      margin: 50px;
+      font-family: 'RebondGrotesque-Regular', sans-serif;
+      background-color: lightgray;
+    }
+
+    @font-face {
+      font-family: 'RebondGrotesque-Regular';
+      src: url('/fonts/RebondGrotesque-Regular.otf') format('opentype');
+    }
+
+    a {
+      outline: none;
+      text-decoration: none;
+      color: #7d7df7;
+    }
+
+    a:hover {
+      color: #83fa4d;
+      transition: 0.3s;
+    }
+
+    span {
+      font-size: 15px;
+    }
+
+    input {
+      background: #83fa4d;
+      border: none;
+      border-radius: 20px;
+      padding-left: 60px;
+      height: 30px;
+      font-family: 'RebondGrotesque-Regular', sans-serif;
+      font-size: 25px;
+      color: #7d7df7;
+    }
+
+    input.button {
+      background-color: whitesmoke;
+      border: none;
+      border-radius: 20px;
+      padding: 10px;
+      width: 175px;
+      height: 50px;
+      font-size: 25px;
+      margin: 70px auto;
+      display: block;
+      cursor: pointer;
+    }
+
+    input.button:hover {
+      color: #83fa4d;
+      transition: 0.3s;
+    }
+
+  </style>
+</head>
+<body>
+
+  <a href="index.html"><p>↩</p></a>
+
+  <p>
+    Vous pouvez nous écrire sur <a href="mailto:coucou@basebleue.com">coucou@basebleue.com</a>.<br>
+    Si vous souhaitez vous abonner à notre infolettre et recevoir des nouvelles de BB,<br>
+    vous pouvez aussi nous partager votre email :
   </p>
 
-	<span>*garantie sans spam*<br></span>
-<button type="submit">Envoyer ici!</button>
+  <!-- Mailchimp embed form -->
+  <form action="https://instagram.us17.list-manage.com/subscribe/post?u=10fe1f2ac6b909504a9e6c94f&amp;id=dc612d7de3&amp;f_id=0048c6e3f0" method="post" target="_self" novalidate>
+    
+    <div>
+      <input type="email" name="EMAIL" id="mce-EMAIL">
+    </div>
+
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_10fe1f2ac6b909504a9e6c94f_dc612d7de3" tabindex="-1" value="">
+    </div>
+
+    <div>
+      <input type="submit" name="subscribe" value="Envoyer ici!" class="button">
+    </div>
   </form>
 
+  <span>*garantie sans spam*</span>
 
- <style>
-
- 	body {
-	color: #7d7df7;
-	text-align: center;
-	font-size: 25px;
-	position: center;
-	margin: 50px;
-}
-
-@font-face {
-	font-family: 'RebondGrotesque-Regular';
-	src: url(‘/fonts/RebondGrotesque-Regular.otf’) format(‘otf’),
-}
-body {
-	font-family: 'RebondGrotesque-Regular', sans-serif;
-	background-color: lightgray;
-}
-
-span {
-  font-size: 15px;
-}
-
-a {
-  outline: none;
-  text-decoration: none;
-  padding: 2px 1px 0;
- }
-
-a:hover {
-  color: #83fa4d;
-}
-
-a {
-  outline: none;
-  text-decoration: none;
-  color: #7d7df7;
-}
-
-input {
-background: #83fa4d;
-border: none;
-border-radius: 20px;
-padding-left: 60px;
-height: 30px;
-}
-
-
-button {                                 
-	background-color: whitesmoke;                 
-	border: none; 
-	border-radius: 20px;                
-	text-align: center;
-	padding: 10px;
-	width: 165px; 
-	text-align: center;
-	font-size: 25px;
-	position: center;
-	margin: 70px;
-	cursor:pointer;
-}
-
-button:hover {
-  color: #83fa4d;
-  transition: 0.3s;
-}
-
-
-email {
-font-family: 'RebondGrotesque-Regular';
-	src: url(‘/fonts/RebondGrotesque-Regular.otf’) format(‘otf’);
-	color: #7d7df7;
-	text-align: center;
-	font-size: 45px;
-	position: center;
-	margin: 50px;
-}
-
-button,
-input,
-select,
-textarea {
-	font-family: 'RebondGrotesque-Regular';
-	src: url(‘/fonts/RebondGrotesque-Regular.otf’) format(‘otf’);
-	font-size: 25px;
-	color: #7d7df7;
-}
-
- </style>
-
+</body>
+</html>
