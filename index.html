@@ -32,18 +32,50 @@
     }
 
     .wavy-underline {
-      text-decoration-line: underline;
-      text-decoration-style: wavy;
-      text-decoration-color: #7d7df7;
-      text-decoration-thickness: 1px;
-      color: #7d7df7;
-      transition: color 0.3s ease, text-decoration-color#83fa4d 0.3s ease;
-    }
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #7d7df7;
+  text-decoration-thickness: 1px;
+  color: #7d7df7;
+  transition: color 0.3s ease, text-decoration-color 0.3s ease;
+}
+
+.wavy-underline:hover {
+  color: #83fa4d;
+  text-decoration-color: #83fa4d;
+}
+
+.image-frieze {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fafafa;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  z-index: 1000;
+}
+
+.image-frieze img {
+  height: 50px;
+  transition: transform 0.3=7s ease;
+  cursor: pointer;
+}
+
+.image-frieze img:hover {
+  transform: scale(8);
+  transform-origin: bottom center;
+  z-index: 2;
+}
+
 
   </style>
 </head>
 
 <body>
+
   <p><br><br><br>Maison des entre deux et des expérimentations, <br>
     ᵬase ᶀleue est une collective déterminée à naviguer en eaux troubles. <br>
     Espace de réflexion dédié aux spéculations artistiques, <br>
@@ -54,7 +86,7 @@
   <p>
     le commissariat d’exposition,<br>
     la production d'œuvres,<br>
-    et <a href="edition.html" class="wavy-underline">l’édition</a> ;
+    et <a href="editions.html" class="wavy-underline">l’édition</a> ;
   </p>
 
   <p>
@@ -70,13 +102,33 @@
 
   <br>↕<br><br>
 
-  <a href="contact.html" class="blink-on-hover">Pour nous écrire <br>💌</a>
+  <a href="contact.html" class="blink-on-hover">Ici pour entrer en contact <br>💌</a>
 
-  <br><br><br>
+  <br>
 
-  <p>
-    <a href="https://www.instagram.com/basebleue/" target="_blank" class="blink-on-hover">ʚïɞ</a>
-  </p>
+  <div class="image-frieze">
+    <img src="images/index1.jpeg" alt="image 1">
+    <img src="images/index2.jpeg" alt="image 2">
+    <img src="images/index3.jpeg" alt="image 3">
+    <img src="images/index4.jpeg" alt="image 4">
+    <img src="images/index5.jpeg" alt="image 5">
+    <img src="images/index6.jpeg" alt="image 6">
+    <img src="images/index7.jpeg" alt="image 7">
+    <img src="images/index8.jpeg" alt="image 8">
+    <img src="images/index9.jpeg" alt="image 9">
+    <img src="images/index10.jpeg" alt="image 10">
+    <img src="images/index11.jpeg" alt="image 11">
+    <img src="images/index12.jpeg" alt="image 12">
+    <img src="images/index13.jpeg" alt="image 13">
+    <img src="images/index14.jpeg" alt="image 14">
+    <img src="images/index15.jpeg" alt="image 15">
+    <img src="images/index16.jpeg" alt="image 16">
+    <img src="images/index17.jpeg" alt="image 17">
+    <img src="images/index18.jpeg" alt="image 18">
+    <img src="images/index19.jpeg" alt="image 19">
+    
+  </div>
+
 </body>
 </html>
 

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Galerie d'Images</title>
+    <style> 
+        body {
+            height: 100%;
+            color: #7d7df7;
+            text-align: center;
+            font-size: 15px;
+            margin: 0;
+            font-family: 'RebondGrotesque-Regular', sans-serif;
+            background-color: lightgray;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+       .container {
+          width: 100%;
+          display: flex;
+          height: 100%;
+          align-items: flex-start; /* aligne les colonnes en haut */
+          min-height: 100vh;
+        }
+      
+        .left-column {
+            flex: 0 0 30%; /* La colonne de gauche occupe 40% */
+            padding: 110px 15px 15px 15px; /* ← ajoute 30px en haut */
+            background-color: #f0f0f0;
+            box-sizing: border-box;
+        }
+        .left-column ul {
+            list-style: none; /* supprime les puces */
+        }
+
+        .left-column ul li {
+            position: relative;
+            margin-bottom: 20px; /* espace entre les images */
+            cursor: pointer;
+        }
+        /* Images */
+        .left-column ul li img {
+            width: 95%;
+            border-radius: none;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+        /* Image par défaut */
+        .left-column ul li img.default-img {
+            position: relative;
+            z-index: 1;
+        }
+        /* Image au survol, positionnée au même endroit, cachée par défaut */
+        .left-column ul li img.hover-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 94%;
+            border-radius: none;
+            opacity: 0;
+            transition: opacity 0.3s ;
+            pointer-events: none; /* évite que cette image bloque les événements souris */
+            z-index: 2;
+        }
+        /* Au survol du li : image hover visible */
+        .left-column ul li:hover img.hover-img {
+            opacity: 1;
+        }
+        /* Au survol du li : image par défaut invisible */
+        .left-column ul li:hover img.default-img {
+            opacity: 0;
+        }
+
+.image-hover-container {
+  position: relative;
+}
+
+.image-hover-container img {
+  width: 95%;
+  border-radius: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.image-hover-container img.default-img {
+  opacity: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.image-hover-container:hover img.default-img {
+  opacity: 0;
+}
+
+.image-hover-container:hover img.hover-img {
+  opacity: 1;
+}
+
+.image-hover-container.moved img.hover-img {
+  opacity: 0;
+  z-index: 0;
+}
+
+.image-hover-container.moved img.move-img {
+  opacity: 1;
+  z-index: 3;
+}
+
+        .right-column {
+            flex: 1; /* La colonne de droite occupe le reste de l'espace disponible */
+            padding: 30px;
+            background-color: #fafafa;
+            border: 5px solid white; /* Ligne blanche fine */
+            box-sizing: border-box;  /* Pour que la bordure soit incluse dans la taille */
+            position: relative;
+        }
+
+
+
+        .carousel {
+    border-top: 1.5px solid #83fa4d;
+    padding-bottom: 10px;
+    margin-bottom: 30px; /* ajoute un espace en dessous */
+    position: relative; /* conserve relative au cas où */
+}
+        .carousel-text {
+    position: relative; /* au lieu de absolute */
+    top: auto;
+    left: auto;
+    transform: none;
+    width: auto;
+    text-align: left;
+    padding: 10px 0;
+    background-color: transparent;
+    color: #7d7df7;
+    font-size: 14px;
+    z-index: auto;
+}
+        .fleche-retour {
+              font-size: 24px;
+              color: #7d7df7;
+              text-decoration: none;
+              transition: color 0.3s;
+              z-index: 1001;
+              display: block; /* ✅ pour pouvoir s’aligner */
+              margin-bottom: 20px;
+              margin-top: 15px;
+        }
+
+        .fleche-retour:hover {
+            color: #83fa4d;
+            text-decoration: none;
+        }
+
+        .bandeau-defilant {
+  width: 100%;
+  background-color: #7d7df7;
+  color: white;
+  overflow: hidden;
+  white-space: nowrap;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  padding: 6px 0;
+  font-size: 16px;
+  font-family: 'RebondGrotesque-Regular', sans-serif;
+  border-bottom: 5px solid white;
+}
+
+.bandeau-defilant-bottom {
+  width: 100%;
+  background-color: #7d7df7;
+  color: white;
+  overflow: hidden;
+  white-space: nowrap;
+  position: fixed;
+  bottom: 0;        /* positionné en bas */
+  left: 0;
+  z-index: 9999;
+  padding: 6px 0;
+  font-size: 16px;
+  font-family: 'RebondGrotesque-Regular', sans-serif;
+  border-top: 5px solid white; /* bordure blanche en haut */
+}
+
+.bandeau-defilant-bottom .texte-defilant {
+  display: inline-block;
+  padding-left: 100%;
+  animation: defilement 50s linear infinite;
+}
+
+.texte-defilant {
+  display: inline-block;
+  padding-left: 100%;
+  animation: defilement 40s linear infinite;
+}
+
+@keyframes defilement {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+    </style>
+</head>
+<body>
+<!-- Bandeau défilant en bas -->
+<div class="bandeau-defilant-bottom">
+  <div class="texte-defilant">
+     Nous préparons actuellement une version augmentée de <em>Tartanalyse</em> qui sera disponible cet hiver. Ecrivez-nous si vous en souhaitez un exemplaire !
+  </div>
+</div>
+
+<div class="bandeau-defilant">
+  <div class="texte-defilant"> ᵬase ᶀleue est aussi une micro maison d’édition indépendante basée à Paris. Vous verrez, base bleue ne propose pas de ligne éditoriale particulièrement définie et on l’aime ainsi !  Nous publions autant des livres d’artiste, que des guides subjectifs des villes que l'on chérie et des fanzines.</div>
+</div>
+    <div class="container">
+        <!-- Colonne de gauche -->
+        <div class="left-column">
+            <ul>
+                <li>
+                      <div class="image-hover-container">
+                        <img class="default-img" src="images/Tartanalyse.jpeg" alt="Image de Tartanalyse" />
+                        <img class="hover-img" src="images/Tartanalyseint.jpeg" alt="Image de Tartanalyse au survol" />
+                        <img class="move-img" src="images/Tartanalyseint2.jpeg" alt="Image après mouvement" />
+                      </div>
+                </li>
+                <li>
+                    <div class="image-hover-container">
+                    <img class="default-img" src="images/MEDUSES1.jpeg" alt="Image des Méduses" />
+                    <img class="hover-img" src="images/MEDUSES2.jpeg" alt="Image des Méduses au survol" />
+                    </div>
+                </li>
+                <li>
+                    <div class="image-hover-container">
+                    <img class="default-img" src="images/HUMEDADES.jpeg" alt="Image d'Humedades" />
+                    <img class="hover-img" src="images/5.png" alt="Image d'Humedades au survol" />
+                    <img class="move-img" src="images/6.png" alt="Image après mouvement" />
+                    </div>
+                </li>
+                <li>
+                  <div class="image-hover-container"></div>
+                    <img class="default-img" src="images/QUADERNO1.jpeg" alt="Image Quaderno" />
+                    <img class="hover-img" src="image3-hover.jpg" alt="Image 3 au survol" />
+                </li>
+                   <li>
+                    <div class="image-hover-container">
+                    <img class="default-img" src="images/Dasha 0.jpeg" alt="Image Surtout des fleurs" />
+                    <img class="hover-img" src="images/Dasha 1.jpeg" alt="Image Surtout des fleurs" />
+                    </div>
+                </li>
+                <!-- Ajoute d'autres images avec leur version hover ici -->
+            </ul>
+        </div>
+
+        <!-- Colonne de droite -->
+<div class="right-column">
+    <div style="text-align: right;">
+    <a href="index.html" class="fleche-retour">↩</a>
+</div>
+    <div class="carousel">
+        <div class="carousel-text">
+            <p id="carousel-description">
+                <br><em>TARTANALYSE</em><br><br><br>
+                Recherches menées par Alix Laraignou et Adèle Morineau<br>
+                Avec les contributions de Gaé, Lison Zzzero, Marie Andrieu et Pauline Thirion<br>
+                Conception éditoriale et graphique : Alix Laraignou<br>
+                Date de publication : mars 2025<br>
+                Pages : 70<br>
+                Dimensions : 210mm x 140mm
+            </p>
+            <br><br>
+            La tarte se partage, se coupe en parts, se distribue, se rompt – tout comme le pain dont elle dérive. 
+            Ce mets familier de la cuisine française (mais pas que), sut autant faire sa place parmi les soupers populaires que sur les tables royales. 
+            Elle apparaît dans de nombreux contes, expressions langagières, légendes culinaires et ritournelles, et devient également un élément central de la comédie burlesque. 
+            <br>À travers ces pages, nous avons donc cherché à sonder la tarte – en nous intéressant à ses origines, en tentant d’inventorier la diversité de ses recettes et la multiplicité de ses formes, et en retraçant son évolution à travers les âges et nos imaginaires. 
+            Elle se donnera donc à voir d’abord sous son sens propre, mais aussi sous son sens figuré, car la tarte n’est pas uniquement faite pour être mangée. La tarte, elle se regarde, elle symbolise, elle évoque, voire personnifie. 
+            On l’utilise pour faire autant illusion qu’allusion – que cela soit au secret, à la fuite du temps, ou aux apparences trompeuses. <br>
+            Enfin, la tarte se retrouve aussi au milieu de nombreux débats. 
+            Culinaires d’abord, à cause de ses recettes variant entre les localités, pouvant déclencher parfois de vives querelles de chapelle, puis politiques, quand la tarte n’est plus dégustée mais lancée au visage, plus tellement pour faire rire, mais surtout en signe de contestation. 
+            En mêlant dans cette recherche, pop culture, savoirs vernaculaires et (une pincée de) culture savante, nous vous concoctons ici une approche contrastée et décloisonnée de la tarte, de son histoire et de sa symbolique. Ces différents modes de savoir sont ici considérés sur un pied d'égalité pour tenter de les faire dialoguer – voir comme ils se répondent et se nourrissent - et peut-être faire advenir d’autres savoirs inattendus.<br><br><br>
+            <br>SOLD OUT<br><br>
+        </div>
+    </div>
+
+    <div class="carousel">
+        <div class="carousel-text">
+            <p id="carousel-description">
+                <br><em>CERTAINES MÉDUSES SONT IMMORTELLES<br></em><br><br>
+                Autrices : Anouck Chênebeau, Louise Cattarinussi, Isaline Dupond Jacquemar, Alix Laraignou, Marine Lemaire, Maud Yvon<br>
+                Date de publication : mai 2023<br>
+                Pages : 62<br>
+                Dimensions : 210mm x 145mm<br><br><br>
+
+                <em>Méduse, celle qui protège, petite-fille de la Terre<br>
+                et du flot marain.<br>
+                Chevelure de serpents.<br>
+                Pouvoir de pétrifier quiconque croise son regard.<br>
+                Allure fatalement magnifique,<br>
+                devenue monstrueusement hideuse.<br>
+                La figure mythologique de la méduse <br>
+                effrais, attire, inspire.</em><br><br><br>
+
+                En 2022, base bleue imaginait l’exposition « Certaines méduses sont immortelles ». 
+                Ce projet a initié de vives discussions, de douces rêveries et des méditations spéculatives en tout genre. 
+                Un an plus tard, cette recherche s'est poursuivie dans une édition. 
+                Mêlant l’écrit et l’image, cet ouvrage collectif donne à voir des facettes de nos existences incarnées nous constituant à différents âges. 
+                Il sonde le regard porté sur les corps et explore l’être en train de se faire et de se défaire.<br><br><br><br><br><br><br>
+
+                SOLD OUT
+            </p>
+        </div>
+    </div>
+
+    <div class="carousel">
+        <div class="carousel-text">
+            <p id="carousel-description">
+                <br><em>HUMEDADES<br></em><br><br>
+                Autrices : l'artiste Ángela Jiménez Durán et la curatrice Margaux Knight <br>
+                Conception éditoriale et graphique : Vincent Chappuis<br>
+                Date de publication : décembre 2023<br>
+                Pages : 60<br>
+                Dimensions : 194mm x 240mm<br><br><br>
+                
+               <em>Les installations d’Ángela sont des indices poétiques d’une cartographie énigmatique, 
+                elles dessinent les contours d’un univers habité qui questionne radicalement la place de l’artiste face aux œuvres, des humains face aux choses, du vivant face aux matières.</em><br><br>
+
+                Cet objet-livre rassemble les réflexions autour de ces œuvres et de leur réception, tout en mêlant pratiques artistiques et universitaires. 
+                Il vise à faire advenir un mode de connaissance qui fasse dialoguer poésie et recherche critique.<br><br>
+                Cet ouvrage a été publié dans le cadre de l’exposition <em> Humedades </em> au Château de Servières (Marseille).<br><br><br><br><br>
+
+                SOLD OUT
+            </p>
+        </div>
+    </div>
+    <div class="carousel">
+        <div class="carousel-text">
+            <p id="carousel-description">
+                <br><em>QUADERNO 1 - KØBENHAVN<br></em><br><br>
+                Autrice : Louise Cattarinussi<br>
+                Date de publication : 2022<br>
+                Pages : <br>
+                Dimensions : <br><br><br>
+                
+              QUADERNO est une collection de guides de voyage auto-édités, entre carnets d’adresses et livres de photographie. Sa première édition vous emmène pour une déambulation au fil des quartiers de la capitale danoise !<br><br><br><br><br><br><br><br><br><br><br>
+
+                SOLD OUT
+            </p>
+        </div>
+    </div>
+<div class="carousel">
+        <div class="carousel-text">
+            <p id="carousel-description">
+              <br><em>Surtout des fleurs et des visages<br></em><br><br>
+                Autrice : DASHAETDASHA<br>
+                Conception éditoriale et graphique : Alix Laraignou
+                Date de publication : 2022<br>
+                Pages : 20<br>
+                Dimensions : xxmm x xxxmm<br><br><br>
+A travers des formes fixes et colorées répétées jour après jour dans ses carnets, DASHAETDASHA laisse avec curiosité se déployer l'inconnu et devient alors l’observatrice de son propre geste. 
+Sans quête d’évolution formelle ou de perfectibilité, cette pratique ritualisée se transforme en un champ d’exploration pour une meilleure connaissance de soi et du monde. 
+A l’occasion de l’exposition *·sᴜʀᴛᴏᴜᴛ ᴅᴇs ғʟᴇᴜʀs ᴇᴛ ᴅᴇs ᴠɪsᴀɢᴇs·' ՞, base bleue a édité un livret réunissant une sélection d'une quinzaine de dessins exposés. <br><br><br><br><br><br><br>
+SOLD OUT
+</p>
+        </div>
+    </div>
+ </div>
+
+<script>
+  document.querySelectorAll('.image-hover-container').forEach(container => {
+    let timeout;
+    let moved = false;
+
+    container.addEventListener('mousemove', () => {
+      if (!moved && !timeout) {
+        // Lance un compte à rebours de 1 seconde
+        timeout = setTimeout(() => {
+          container.classList.add('moved');
+          moved = true;
+        }, 1000); // 1000 ms = 1 seconde
+      }
+    });
+
+    container.addEventListener('mouseleave', () => {
+      // Si on quitte avant les 1 seconde, on annule
+      clearTimeout(timeout);
+      timeout = null;
+
+      container.classList.remove('moved');
+      moved = false;
+    });
+  });
+</script>
+
+
+</body>
+
