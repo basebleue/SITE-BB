@@ -8,9 +8,10 @@ body {
 
 
 @font-face {
-	font-family: 'RebondGrotesque-Regular';
-	src: url(‘/fonts/RebondGrotesque-Regular.otf’) format(‘otf’),
+	font-family: 'RebondGrotesque';
+	src: url(‘/fonts/RebondGrotesque-Regular.otf’) format(‘opentype’);
 }
+
 body {
 	font-family: 'RebondGrotesque-Regular', sans-serif;
 	background-color: lightgray;
