@@ -2,7 +2,7 @@ body {
 	color: #7d7df7;
 	text-align: center;
 	font-size: 25px;
-	position: center;
+	/*position: center;*/
 	margin: 50px;
 }
 
@@ -13,7 +13,7 @@ body {
 }
 
 body {
-	font-family: 'RebondGrotesque-Regular', sans-serif;
+	font-family: 'RebondGrotesque', sans-serif;
 	background-color: lightgray;
 }
 
