@@ -83,40 +83,55 @@
       background-color:  #fafafa;
     }
 
-  .image-frieze {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 4px;
-    padding: 5px;
-    /* garde la hauteur de la frise */
-    height: fit-content;
-    background: #fafafa;
-    z-index: 1000;
-  }
-  .image-frieze img {
-    height: 40px;
-    transition: transform 0.37s ease;
-  }
+ .image-frieze {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background: #fafafa;
+  z-index: 1000;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory; /* Permet le défilement fluide */
+}
+
+.image-frieze img {
+  height: 50px;
+  transition: transform 0.37s ease;
+  cursor: pointer;
+  scroll-snap-align: center; /* Aligne les images au centre lors du défilement */
+  display: inline-block;
+  height: 40px;
+  vertical-align: bottom;
+}
+
+
 .image-frieze img.fullscreen {
-  position: fixed; /* changer absolute en fixed */
-  bottom: 50px;    /* décale l’image un peu au-dessus de la frise */
+  position: fixed;
+  bottom: 0;
   left: 50%;
-  transform: translateX(-50%) scale(6);
+  transform: translateX(-50%);
+  width: 100%;
+  height: auto;
+  object-fit: contain; /* Conserve les proportions de l'image */
   z-index: 10000;
   cursor: zoom-out;
-
   max-width: 90vw;   /* limite largeur à 90% de la fenêtre */
   max-height: 80vh;  /* limite hauteur à 80% de la fenêtre */
   object-fit: contain;
   box-shadow: 0 0 15px rgba(0,0,0,0.4);
+  width: 90vw;        /* limite largeur à 90% de la fenêtre */
+  max-height: 80vh;   /* limite hauteur à 80% de la fenêtre */
 }
 
 .image-frieze {
   overflow-y: visible; /* important pour ne pas couper verticalement */
+  overflow-x: auto;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -127,19 +142,12 @@
   gap: 10px;
   padding: 10px;
   z-index: 9999; /* Inférieur à celui de l'image en plein écran */
+  scrollbar-width: none;
+  white-space: nowrap;
 }
 
-/* Pour que les <img> restent alignés côte à côte */
-.image-frieze img {
-  display: inline-block;
-  height: 40px;
-  vertical-align: bottom;
-}
 .image-frieze::-webkit-scrollbar {
   display: none;
-}
-.image-frieze {
-  scrollbar-width: none;
 }
 }
 
