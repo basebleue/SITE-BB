@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html lang="fr"> 
+<html lang="fr">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
   <link href="styles/style.css" rel="stylesheet" type="text/css">
   <link rel="icon" href="/images/favicon.png" sizes="32x32" type="image/png">
-
   <style>
-
     body {
       color: #7d7df7;
       text-align: center;
@@ -35,82 +32,81 @@
     }
 
     .wavy-underline {
-  text-decoration-line: underline;
-  text-decoration-style: wavy;
-  text-decoration-color: #7d7df7;
-  text-decoration-thickness: 1px;
-  color: #7d7df7;
-  transition: color 0.3s ease, text-decoration-color 0.3s ease;
-}
+      text-decoration-line: underline;
+      text-decoration-style: wavy;
+      text-decoration-color: #7d7df7;
+      text-decoration-thickness: 1px;
+      color: #7d7df7;
+      transition: color 0.3s ease, text-decoration-color 0.3s ease;
+    }
 
-.wavy-underline:hover {
-  color: #83fa4d;
-  text-decoration-color: #83fa4d;
-}
+    .wavy-underline:hover {
+      color: #83fa4d;
+      text-decoration-color: #83fa4d;
+    }
 
-.image-frieze {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: #fafafa;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px;
-  z-index: 1000;
-}
+    /* Frise d'images */
+    .image-frieze {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #fafafa;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px;
+      z-index: 1000;
+    }
 
-.image-frieze img {
-  height: 50px;
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
+    .image-frieze img {
+      height: 50px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
 
-.image-frieze img:hover {
-  transform: scale(8);
-  transform-origin: bottom center;
-  z-index: 2;
-}
+    .image-frieze img:hover {
+      transform: scale(8);
+      transform-origin: bottom center;
+      z-index: 2;
+    }
 
-/* hide existing frieze on mobile */
-@media (max-width: 768px) {
-  .image-frieze {
-    display: none !important;
-    height: 0;
-    overflow: hidden;
-  }
+    /* Zone mobile */
+    @media (max-width: 768px) {
+      .image-frieze {
+        display: none;
+      }
 
-   body {
-    font-size: clamp(16px, 4vw, 18px); /* fluide et lisible sur mobile » :contentReference[oaicite:5]{index=5} */
-    text-align: center;
-    margin: 20px;
-  }
+      .mobile-image-zone {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        width: 80px;
+        height: 80px;
+        z-index: 1000;
+        pointer-events: none;
+      }
 
-  /* fixed zone for mobile */
- .mobile-image-zone {
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  width: 80px;    /* réduit la taille */
-  height: 80px;
-  z-index: 1000;
-}
-.mobile-image-zone img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: opacity 0.5s ease;
-}
-  .mobile-image-zone img.active {
-    opacity: 1;
-  }
-}
+      .mobile-image-zone img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 0.5s ease;
+        opacity: 0;
+      }
 
+      .mobile-image-zone img.active {
+        opacity: 1;
+      }
 
+      body {
+        font-size: clamp(16px, 4vw, 18px);
+        text-align: center;
+        margin: 20px;
+      }
+    }
   </style>
 </head>
-
 <body>
 
   <p><br><br><br>Maison des entre deux et des expérimentations, <br>
@@ -160,55 +156,9 @@
     <img src="images/index14.png" alt="image 14">
     <img src="images/index15.png" alt="image 15">
     <img src="images/index16.png" alt="image 16">
-    <img src="images/index17.png" alt="image 17">
-    <img src="images/index18.jpeg" alt="image 18">
-    <img src="images/index19.jpeg" alt="image 19">
-    
-  </div>
-
-<!-- zone mobile pour l'image fixe -->
-<div class="mobile-image-zone">
-  <img id="mobile-preview" src="" alt="preview">
-</div>
-
-<script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"></script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  if (window.innerWidth > 768) return;
-
-  const sections = document.querySelectorAll("body > p, a.blink-on-hover");
-  const imgPaths = Array.from(sections, (_, i) => `images/index${i+1}.png`);
-  const preview = document.getElementById("mobile-preview");
-  let current = -1;
-
-  const callback = (entries) => {
-    entries.forEach(entry => {
-      console.log(entry.target, entry.isIntersecting, entry.intersectionRatio);
-      if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
-        const idx = Array.from(sections).indexOf(entry.target);
-        if (idx !== current) {
-          current = idx;
-          preview.src = imgPaths[idx] || imgPaths[0];
-        }
-      }
-    });
-  };
-
-  const observer = new IntersectionObserver(callback, {
-    root: null,
-    rootMargin: "0px",
-    threshold: 0.2
-  });
-  sections.forEach(el => observer.observe(el));
-
-  preview.src = imgPaths[0];
-});
-</script>
-
-</script>
-
-</body>
-</html>
+    <img src="images/index17.png
+::contentReference[oaicite:16]{index=16}
+ 
 
 
 
