@@ -109,6 +109,28 @@
     z-index: 10000;
     cursor: zoom-out;
   }
+
+  .image-frieze {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  gap: 4px;
+  padding: 5px;
+}
+
+/* Pour que les <img> restent alignés côte à côte */
+.image-frieze img {
+  display: inline-block;
+  height: 40px;
+  vertical-align: bottom;
+}
+.image-frieze::-webkit-scrollbar {
+  display: none;
+}
+.image-frieze {
+  scrollbar-width: none;
+}
 }
 
 
