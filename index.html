@@ -78,6 +78,23 @@
     line-height: 1.1;         /* interligne plus resserré */
     margin: 20px 20px 75px;   /* marges plus petites sur les côtés + marge plus grande en bas */
   }
+  .image-frieze {
+  gap: 4px;           /* réduit l’espacement */
+  padding: 5px;       /* moins de padding */
+}
+.image-frieze img {
+  height: 40px;       /* images plus petites */
+}
+
+/* L’image cliquée devient fixed, centrée en bas */
+.image-frieze img.fullscreen {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%) scale(2);
+  z-index: 10000;
+  transition: transform 0.3s ease;
+}
 }
 
 
@@ -138,6 +155,18 @@
     <img src="images/index19.jpeg" alt="image 19">
     
   </div>
+
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.innerWidth > 768) return;
+
+  document.querySelectorAll('.image-frieze img').forEach(img => {
+    img.addEventListener('click', () => {
+      img.classList.toggle('fullscreen');
+    });
+  });
+});
+</script>
 
 </body>
 </html>
