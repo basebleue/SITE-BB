@@ -101,22 +101,32 @@
     height: 40px;
     transition: transform 0.37s ease;
   }
-  .image-frieze img.fullscreen {
-    position: absolute;
-    bottom: 1px; 
-    left: 50%;
-    transform: translateX(-50%) scale(6);
-    z-index: 10000;
-    cursor: zoom-out;
-  }
+.image-frieze img.fullscreen {
+  position: fixed; /* changer absolute en fixed */
+  bottom: 50px;    /* décale l’image un peu au-dessus de la frise */
+  left: 50%;
+  transform: translateX(-50%) scale(6);
+  z-index: 10000;
+  cursor: zoom-out;
 
-  .image-frieze {
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
-  gap: 4px;
-  padding: 5px;
+  max-width: 90vw;   /* limite largeur à 90% de la fenêtre */
+  max-height: 80vh;  /* limite hauteur à 80% de la fenêtre */
+  object-fit: contain;
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+.image-frieze {
+  overflow-y: visible; /* important pour ne pas couper verticalement */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fafafa;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  z-index: 9999; /* Inférieur à celui de l'image en plein écran */
 }
 
 /* Pour que les <img> restent alignés côte à côte */
