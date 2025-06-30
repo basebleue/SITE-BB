@@ -6,19 +6,38 @@
   <link href="styles/style.css" rel="stylesheet" type="text/css">
   
   <style>
+   html { font-size: 16px; }
+
   body {
     color: #7d7df7;
     text-align: center;
-    font-size: 20px;
-    margin: 50px;
     font-family: 'RebondGrotesque-Regular', sans-serif;
-    background-color: #fafafa;/* toto */
-    }
+    margin: 1rem; /* ≃ 16px */
+    background-color: #fafafa;
+    font-size: 1rem;        /* 16px par défaut */
+    line-height: 1.5;
+  }
 
     @font-face {
       font-family: 'RebondGrotesque-Regular';
       src: url('/fonts/RebondGrotesque-Regular.otf') format('opentype');
         }
+
+        /* Styles pour les tablettes à partir de 768px */
+  @media (min-width: 768px) {
+    body {
+      font-size: 1.25rem;  /* 16px × 1.25 = 20px */
+      margin: 1.5rem;
+    }
+  }
+
+  /* Desktop + laptop (>= 1024px) */
+  @media (min-width: 1024px) {
+    body {
+      font-size: 1.25rem;  /* toujours 20px */
+      margin: 2rem;
+    }
+  }
 
 
     .mot-hover {

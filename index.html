@@ -7,14 +7,32 @@
   <link rel="icon" href="/images/favicon.png" sizes="32x32" type="image/png">
 
   <style>
+     body {
+    color: #7d7df7;
+    text-align: center;
+    font-family: 'RebondGrotesque-Regular', sans-serif;
+    margin: 1rem;
+    background-color: #fafafa;
+    font-size: 1rem;        /* 16px par défaut */
+    line-height: 1.5;
+  }
+
+    html { font-size: 16px; }
     body {
-      color: #7d7df7;
-      text-align: center;
-      font-size: 25px;
-      margin: 50px;
-      font-family: 'RebondGrotesque-Regular', sans-serif;
-      background-color:  #fafafa;
+  font-size: clamp(1rem, 1rem + 1vw, 1.25rem); /* entre ~16px et ~20px */
+}
+
+@media (min-width: 768px) {
+  body { font-size: 1.25rem; } /* ≃ 20px sur tablette/laptop */
+}
+
+  /* Desktop + laptop (>= 1024px) */
+  @media (min-width: 1024px) {
+    body {
+      font-size: 1.25rem;  /* toujours 20px */
+      margin: 2rem;
     }
+  }
 
     @font-face {
       font-family: 'RebondGrotesque-Regular';
@@ -55,23 +73,22 @@
   background: #fafafa;
   display: flex;
   justify-content: center;
-  gap: 10px;
-  padding: 10px;
+  gap: 0.25rem;
+  padding: 0.5rem;
   z-index: 1000;
 }
 
 .image-frieze img {
-  height: 50px;
-  transition: transform 0.3=7s ease;
-  cursor: pointer;
-}
-
-.image-frieze img:hover {
-  transform: scale(8);
-  transform-origin: bottom center;
-  z-index: 2;
-}
-
+    flex-shrink: 0;
+    height: 40px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  .image-frieze img:hover {
+    transform: scale(2.5);
+    transform-origin: bottom center;
+    z-index: 2;
+  }
 
   </style>
 </head>
