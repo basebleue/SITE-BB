@@ -113,20 +113,21 @@
 
 .image-frieze img.fullscreen {
   position: fixed;
-  bottom: 0;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
   height: auto;
-  object-fit: contain; /* Conserve les proportions de l'image */
+  max-height: 80vh;
+  object-fit: contain;
   z-index: 10000;
   cursor: zoom-out;
-  max-width: 90vw;   /* limite largeur à 90% de la fenêtre */
-  max-height: 80vh;  /* limite hauteur à 80% de la fenêtre */
-  object-fit: contain;
-  box-shadow: 0 0 15px rgba(0,0,0,0.4);
-  width: 90vw;        /* limite largeur à 90% de la fenêtre */
-  max-height: 80vh;   /* limite hauteur à 80% de la fenêtre */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+
+.image-frieze.fullscreen-active {
+  display: none;
 }
 
 .image-frieze {
@@ -218,21 +219,21 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  if (window.innerWidth > 768) return;
-
   const imgs = Array.from(document.querySelectorAll('.image-frieze img'));
+  const frieze = document.querySelector('.image-frieze');
 
   imgs.forEach(img => {
-    img.addEventListener('click', (e) => {
-      e.stopPropagation(); // empêche la propagation pour ce clic précis
-      imgs.forEach(el => el.classList.remove('fullscreen')); // retire fullscreen de toutes
-      img.classList.add('fullscreen'); // applique la classe à l’image cliquée
+    img.addEventListener('click', () => {
+      img.classList.add('fullscreen');
+      frieze.classList.add('fullscreen-active');
     });
   });
 
-  // clic en dehors : retire la classe fullscreen
-  document.addEventListener('click', () => {
-    imgs.forEach(el => el.classList.remove('fullscreen'));
+  document.addEventListener('click', (e) => {
+    if (!frieze.contains(e.target)) {
+      imgs.forEach(img => img.classList.remove('fullscreen'));
+      frieze.classList.remove('fullscreen-active');
+    }
   });
 });
 </script>
