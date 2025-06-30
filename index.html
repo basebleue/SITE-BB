@@ -73,29 +73,27 @@
 }
 
 @media (max-width: 768px) {
-  body {
-    font-size: 17px;          /* texte plus petit */
-    line-height: 1.1;         /* interligne plus resserré */
-    margin: 20px 20px 75px;   /* marges plus petites sur les côtés + marge plus grande en bas */
+    body {
+    font-size: 17px;
+    line-height: 1.1;
+    margin: 20px 20px 75px;
   }
   .image-frieze {
-  gap: 4px;           /* réduit l’espacement */
-  padding: 5px;       /* moins de padding */
-}
-.image-frieze img {
-  height: 40px;       /* images plus petites */
-}
-
-/* L’image cliquée devient fixed, centrée en bas */
-.image-frieze img.fullscreen {
-  position: fixed;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%) scale(2);
-  z-index: 10000;
-  transition: transform 0.3s ease;
-}
-}
+    gap: 4px;
+    padding: 5px;
+  }
+  .image-frieze img {
+    height: 40px;
+  }
+  .image-frieze img.fullscreen {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%) scale(2);
+    z-index: 10000;
+    transition: transform 0.3s ease;
+  }
+} 
 
 
   </style>
