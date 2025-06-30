@@ -91,7 +91,7 @@
     left: 50%;
     transform: translateX(-50%) scale(2);
     z-index: 10000;
-    transition: transform 0.3s ease;
+    pointer-events: none;
   }
 } 
 
@@ -154,18 +154,23 @@
     
   </div>
 
-  <script>
+ <script>
 document.addEventListener('DOMContentLoaded', () => {
   if (window.innerWidth > 768) return;
 
-  document.querySelectorAll('.image-frieze img').forEach(img => {
+  const imgs = document.querySelectorAll('.image-frieze img');
+  imgs.forEach(img => {
     img.addEventListener('click', () => {
+      // si une autre image est fullscreen → la désactive
+      imgs.forEach(el => {
+        if (el !== img) el.classList.remove('fullscreen');
+      });
+      // active/désactive la classe sur l’image cliquée
       img.classList.toggle('fullscreen');
     });
   });
 });
 </script>
-
 </body>
 </html>
 
