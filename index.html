@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr"> 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
   <link href="styles/style.css" rel="stylesheet" type="text/css">
   <link rel="icon" href="/images/favicon.png" sizes="32x32" type="image/png">
@@ -61,7 +62,7 @@
 
 .image-frieze img {
   height: 50px;
-  transition: transform 0.3=7s ease;
+  transition: transform 0.37s ease;
   cursor: pointer;
 }
 
@@ -70,6 +71,13 @@
   transform-origin: bottom center;
   z-index: 2;
 }
+
+@media (max-width: 768px) {
+  body {
+    font-size: 18px;      /* texte plus grand sur mobile */
+    line-height: 1.3;     /* interligne plus resserré */
+    margin: 20px;         /* marges plus petites */
+  }
 
 
   </style>
