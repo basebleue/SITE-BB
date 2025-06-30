@@ -210,6 +210,16 @@ const observer = new IntersectionObserver((entries) => {
   preview.classList.add("active");
 });
 
+function callback(entries) {
+  entries.forEach(entry => {
+    console.log(entry.target, entry.isIntersecting, entry.intersectionRatio);
+    if (entry.isIntersecting) {
+      // ton code de changement d'image
+    }
+  });
+}
+
+
 </script>
 
 </body>
