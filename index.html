@@ -73,27 +73,33 @@
 }
 
 @media (max-width: 768px) {
-    body {
-    font-size: 17px;
-    line-height: 1.1;
-    margin: 20px 20px 75px;
-  }
   .image-frieze {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
     gap: 4px;
     padding: 5px;
+    /* garde la hauteur de la frise */
+    height: fit-content;
+    background: #fafafa;
+    z-index: 1000;
   }
   .image-frieze img {
     height: 40px;
+    transition: transform 0.37s ease;
   }
   .image-frieze img.fullscreen {
-    position: fixed;
-    bottom: 10px;
+    position: absolute;
+    bottom: 0; /* à la même hauteur que la base de la frise */
     left: 50%;
-    transform: translateX(-50%) scale(2);
+    transform: translateX(-50%) scale(3.5);
     z-index: 10000;
-    pointer-events: none;
+    cursor: zoom-out;
   }
-} 
+}
 
 
   </style>
