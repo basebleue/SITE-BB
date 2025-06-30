@@ -166,59 +166,37 @@
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"></script>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  if (window.innerWidth > 768) return;  // desktop ignore
+document.addEventListener("DOMContentLoaded", () => {
+  if (window.innerWidth > 768) return;
 
-  const sections = document.querySelectorAll("body > p, body > br + a"); 
-  // adapte la liste : on observe les paragraphes et le lien de contact
-
-  const imgPaths = [
-    "images/index1.png",
-    "images/index2.png",
-    "images/index3.png",
-    // ... jusqu'à index19 comme dans la frise
-  ];
-
+  const sections = document.querySelectorAll("body > p, a.blink-on-hover");
+  const imgPaths = Array.from(sections, (_, i) => `images/index${i+1}.png`);
   const preview = document.getElementById("mobile-preview");
-  let current = 0;
+  let current = -1;
 
-  function setImage(idx) {
-    if (idx === current) return;
-    current = idx;
-    preview.classList.remove("active");
-    setTimeout(() => {
-      preview.src = imgPaths[idx];
-      preview.classList.add("active");
-    }, 200);
-  }
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const idx = Array.from(sections).indexOf(entry.target);
-      if (idx >= 0 && idx < imgPaths.length) {
-        setImage(idx);
+  const callback = (entries) => {
+    entries.forEach(entry => {
+      console.log(entry.target, entry.isIntersecting, entry.intersectionRatio);
+      if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
+        const idx = Array.from(sections).indexOf(entry.target);
+        if (idx !== current) {
+          current = idx;
+          preview.src = imgPaths[idx] || imgPaths[0];
+        }
       }
-    }
+    });
+  };
+
+  const observer = new IntersectionObserver(callback, {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.2
   });
-}, { threshold: 0.3 }); // moins strict pour mobile
-
-
   sections.forEach(el => observer.observe(el));
-  // image initiale
+
   preview.src = imgPaths[0];
-  preview.classList.add("active");
 });
-
-function callback(entries) {
-  entries.forEach(entry => {
-    console.log(entry.target, entry.isIntersecting, entry.intersectionRatio);
-    if (entry.isIntersecting) {
-      // ton code de changement d'image
-    }
-  });
-}
-
+</script>
 
 </script>
 
