@@ -62,7 +62,7 @@
 
 .image-frieze img {
   height: 50px;
-  transition: transform 0.3=7s ease;
+  transition: transform 0.3s ease;
   cursor: pointer;
 }
 
@@ -164,6 +164,7 @@
   <img id="mobile-preview" src="" alt="preview">
 </div>
 
+<script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   if (window.innerWidth > 768) return;  // desktop ignore
@@ -191,16 +192,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 200);
   }
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const idx = Array.from(sections).indexOf(entry.target);
-        if (idx >= 0 && idx < imgPaths.length) {
-          setImage(idx);
-        }
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const idx = Array.from(sections).indexOf(entry.target);
+      if (idx >= 0 && idx < imgPaths.length) {
+        setImage(idx);
       }
-    });
-  }, { threshold: 0.6 });
+    }
+  });
+}, { threshold: 0.3 }); // moins strict pour mobile
+
 
   sections.forEach(el => observer.observe(el));
   // image initiale
