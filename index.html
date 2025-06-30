@@ -6,6 +6,7 @@
   <link rel="icon" href="/images/favicon.png" sizes="32x32" type="image/png">
 
   <style>
+
     body {
       color: #7d7df7;
       text-align: center;
@@ -71,6 +72,34 @@
   z-index: 2;
 }
 
+/* hide existing frieze on mobile */
+@media (max-width: 768px) {
+  .image-frieze {
+    display: none;
+  }
+
+  /* fixed zone for mobile */
+  .mobile-image-zone {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 120px;
+    height: 120px;
+    z-index: 1000;
+    pointer-events: none;
+  }
+  .mobile-image-zone img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease;
+    opacity: 0;
+  }
+  .mobile-image-zone img.active {
+    opacity: 1;
+  }
+}
+
 
   </style>
 </head>
@@ -98,7 +127,7 @@
   <p>
     ᵬase ᶀleue tente de favoriser les échanges entre pratiques et savoirs<br>
     dans le but d’occasionner des combinaisons inattendues et de favoriser
-    <a href="communauté.html" class="wavy-underline">la communauté</a>, la convivialité et le dialogue. <a href="index_test mobi;e.html" class="wavy-underline">.</a>
+    <a href="communauté.html" class="wavy-underline">la communauté</a>, la convivialité et le dialogue.
   </p>
 
   <br>↕<br><br>
@@ -130,7 +159,60 @@
     
   </div>
 
+<!-- zone mobile pour l'image fixe -->
+<div class="mobile-image-zone">
+  <img id="mobile-preview" src="" alt="preview">
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.innerWidth > 768) return;  // desktop ignore
+
+  const sections = document.querySelectorAll("body > p, body > br + a"); 
+  // adapte la liste : on observe les paragraphes et le lien de contact
+
+  const imgPaths = [
+    "images/index1.png",
+    "images/index2.png",
+    "images/index3.png",
+    // ... jusqu'à index19 comme dans la frise
+  ];
+
+  const preview = document.getElementById("mobile-preview");
+  let current = 0;
+
+  function setImage(idx) {
+    if (idx === current) return;
+    current = idx;
+    preview.classList.remove("active");
+    setTimeout(() => {
+      preview.src = imgPaths[idx];
+      preview.classList.add("active");
+    }, 200);
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(sections).indexOf(entry.target);
+        if (idx >= 0 && idx < imgPaths.length) {
+          setImage(idx);
+        }
+      }
+    });
+  }, { threshold: 0.6 });
+
+  sections.forEach(el => observer.observe(el));
+  // image initiale
+  preview.src = imgPaths[0];
+  preview.classList.add("active");
+});
+
+</script>
+
 </body>
 </html>
+
+
 
 
