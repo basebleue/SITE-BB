@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr"> 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
   <link href="styles/style.css" rel="stylesheet" type="text/css">
   <link rel="icon" href="/images/favicon.png" sizes="32x32" type="image/png">
@@ -75,7 +76,15 @@
 /* hide existing frieze on mobile */
 @media (max-width: 768px) {
   .image-frieze {
-    display: none;
+    display: none !important;
+    height: 0;
+    overflow: hidden;
+  }
+
+   body {
+    font-size: clamp(16px, 4vw, 18px); /* fluide et lisible sur mobile » :contentReference[oaicite:5]{index=5} */
+    text-align: center;
+    margin: 20px;
   }
 
   /* fixed zone for mobile */
@@ -97,21 +106,7 @@
     opacity: 1;
   }
 }
-@media (max-width: 768px) {
-  .image-frieze {
-    display: none !important;
-    height: 0;
-    overflow: hidden;
-  }
-}
 
-@media (max-width: 768px) {
-  body {
-    font-size: clamp(16px, 4vw, 18px); /* fluide et lisible sur mobile » :contentReference[oaicite:5]{index=5} */
-    text-align: center;
-    margin: 20px;
-  }
-}
 
   </style>
 </head>
