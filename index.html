@@ -82,7 +82,7 @@
       font-family: 'RebondGrotesque-Regular', sans-serif;
       background-color:  #fafafa;
     }
-    
+
   .image-frieze {
     position: fixed;
     bottom: 0;
@@ -117,7 +117,7 @@
 
 <body>
 
-  <p><br><br><br>Maison des entre deux et des expérimentations, <br>
+  <p><br>Maison des entre deux et des expérimentations, <br>
     ᵬase ᶀleue est une collective déterminée à naviguer en eaux troubles. <br>
     Espace de réflexion dédié aux spéculations artistiques, <br>
     ᵬase ᶀleue résulte d’un désir commun de tâtonner et d’hasarder ensemble. <br>
@@ -170,20 +170,23 @@
     
   </div>
 
- <script>
+<script>
 document.addEventListener('DOMContentLoaded', () => {
   if (window.innerWidth > 768) return;
 
-  const imgs = document.querySelectorAll('.image-frieze img');
+  const imgs = Array.from(document.querySelectorAll('.image-frieze img'));
+
   imgs.forEach(img => {
-    img.addEventListener('click', () => {
-      // si une autre image est fullscreen → la désactive
-      imgs.forEach(el => {
-        if (el !== img) el.classList.remove('fullscreen');
-      });
-      // active/désactive la classe sur l’image cliquée
-      img.classList.toggle('fullscreen');
+    img.addEventListener('click', (e) => {
+      e.stopPropagation(); // empêche la propagation pour ce clic précis
+      imgs.forEach(el => el.classList.remove('fullscreen')); // retire fullscreen de toutes
+      img.classList.add('fullscreen'); // applique la classe à l’image cliquée
     });
+  });
+
+  // clic en dehors : retire la classe fullscreen
+  document.addEventListener('click', () => {
+    imgs.forEach(el => el.classList.remove('fullscreen'));
   });
 });
 </script>
